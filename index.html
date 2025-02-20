@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chat-box {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .message {
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            max-width: 80%;
+        }
+        .me {
+            background-color: #dcf8c6;
+            text-align: right;
+            margin-left: auto;
+        }
+        .other {
+            background-color: #f1f0f0;
+            text-align: left;
+            margin-right: auto;
+        }
+        .input-box {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body ng-controller="ChatController">
+    <h2>Real-Time Chat</h2>
+    <div class="chat-box">
+        <div ng-repeat="msg in messages" class="message" ng-class="{'me': msg.isMe, 'other': !msg.isMe}">
+            <strong>{{ msg.username }}:</strong> {{ msg.text }}
+        </div>
+    </div>
+    <div class="input-box">
+        <input type="text" ng-model="message" placeholder="Type your message..." />
+        <button ng-click="sendMessage()">Send</button>
+    </div>
+</body>
+<script>
+    
+</script>
+</html>
